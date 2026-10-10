@@ -3,10 +3,8 @@
  * Pindari Enterprises - Main Configuration
  */
 
-define('APP_NAME', 'Pindari Enterprises');
-define('APP_URL', 'http://localhost/pindari-enterprises');
+define('APP_URL', 'https://pindari-erp-portal.onrender.com');
 define('APP_URL_PORTAL', APP_URL . '/app');
-
 // Start session securely
 if (session_status() === PHP_SESSION_NONE) {
     session_set_cookie_params([
