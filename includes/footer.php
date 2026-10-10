@@ -1,47 +1,28 @@
-</main>
-<footer class="site-footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col footer-brand">
-                <div class="logo">
-                    <img src="<?= APP_URL ?>/public/assets/logo.png" alt="Pindari Enterprises" class="logo-img">
-                    <div class="logo-text">
-                        <span class="logo-name">PINDARI</span>
-                        <span class="logo-sub">ENTERPRISES</span>
-                    </div>
-                </div>
-                <p>Empowering workforce solutions across India. We provide comprehensive manpower outsourcing, staffing, payroll, and compliance services to leading industries.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="<?= APP_URL ?>/public/index.php">Home</a></li>
-                    <li><a href="<?= APP_URL ?>/public/about.php">About Us</a></li>
-                    <li><a href="<?= APP_URL ?>/public/services.php">Our Services</a></li>
-                    <li><a href="<?= APP_URL ?>/public/clients.php">Clients</a></li>
-                    <li><a href="<?= APP_URL ?>/public/contact.php">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="<?= APP_URL ?>/public/services.php#manpower">Manpower Outsourcing</a></li>
-                    <li><a href="<?= APP_URL ?>/public/services.php#staffing">Contract Staffing</a></li>
-                    <li><a href="<?= APP_URL ?>/public/services.php#payroll">Payroll Management</a></li>
-                    <li><a href="<?= APP_URL ?>/public/services.php#compliance">Compliance Management</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p>Plot No. 22, Industrial Estate<br>Pimpri-Chinchwad, Pune<br>Maharashtra 411018, India</p>
-                <p>Phone: +91 98765 43210<br>Email: info@pindari.com</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; <?= date('Y') ?> Pindari Enterprises. All rights reserved.</p>
-        </div>
-    </div>
+<style>
+.feedback-marquee{overflow:hidden;white-space:nowrap;background:#0a2342;padding:30px 0;margin-top:30px}
+.marquee-track{display:inline-flex;animation:scroll 35s linear infinite}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.fb-card{min-width:340px;background:white;margin-right:20px;padding:20px;border-radius:12px;white-space:normal}
+.whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,.3)}
+</style>
+
+<div class="feedback-marquee">
+<h3 class="text-center font-black text-white text-[20px] mb-6" style="white-space:normal">Real Feedback from Unit Heads</h3>
+<div class="marquee-track">
+<div class="fb-card">★★★★★<br><b>"PINDARI ENTERPRISES PROVIDED US WITH 15 CNC OPERATORS WITHIN 24 HOURS!"</b><br><span class="text-[12px] text-gray-600">MR. SACHIN DANDEKAR - Dankel Tech</span></div>
+<div class="fb-card">★★★★★<br><b>"THE MOST TRANSPARENT PAYROLL SYSTEM IN PCMC!"</b><br><span class="text-[12px] text-gray-600">MR. AMOL SHAH - RK Polymer</span></div>
+<div class="fb-card">★★★★★<br><b>"ALL WORKERS VERIFIED WITH AADHAR & POLICE CHECKS!"</b><br><span class="text-[12px] text-gray-600">MR. SANKET SHAH - Kraft Plast</span></div>
+<div class="fb-card">★★★★★<br><b>"PINDARI ENTERPRISES PROVIDED US WITH 15 CNC OPERATORS WITHIN 24 HOURS!"</b><br><span class="text-[12px] text-gray-600">MR. SACHIN DANDEKAR - Dankel Tech</span></div>
+<div class="fb-card">★★★★★<br><b>"THE MOST TRANSPARENT PAYROLL SYSTEM IN PCMC!"</b><br><span class="text-[12px] text-gray-600">MR. AMOL SHAH - RK Polymer</span></div>
+</div>
+</div>
+
+<a href="https://wa.me/919860109069?text=Hello%20Pindari%20Enterprises%2C%20I%20need%20manpower%20solution" class="whatsapp-float" target="_blank">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<footer class="bg-[#0a2342] text-white text-center py-4 text-xs">
+PINDARI ENTERPRISES ERP v2.1 | +91 98601 09069 | © 2024 All rights reserved.
 </footer>
-<script src="<?= APP_URL ?>/public/assets/js/main.js"></script>
 </body>
 </html>
