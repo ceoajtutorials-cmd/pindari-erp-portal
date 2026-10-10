@@ -1,128 +1,103 @@
-<?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-require_once __DIR__ . '/../config/config.php';
-$pageTitle = 'Home';
-$currentPage = 'home';
-require_once __DIR__ . '/../includes/header.php';
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pindari Enterprises - Trusted Manpower Partner in PCMC</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif}
+.hero{background:linear-gradient(135deg,#0a2342 0%,#123a6b 100%)}
+.card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,.12)}
+.marquee-track{display:flex;animation:scroll 35s linear infinite}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+</style>
+</head>
+<body class="bg-[#f8fafc]">
+
+<!-- NAV -->
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<img src="public/assets/logo.png" class="h-9" onerror="this.innerHTML='P'">
+<div><p class="font-black text-[#0a2342] leading-none text-[18px]">PINDARI</p><p class="text-[10px] tracking-[2px] text-gray-500">ENTERPRISES</p></div>
+</div>
+<div class="hidden md:flex gap-7 text-[14px] font-medium items-center text-gray-600">
+<a href="/" class="text-[#0a2342] font-bold border-b-2 border-[#c4121f]">Home</a>
+<a href="/about.php">About</a>
+<a href="/services.php">Services</a>
+<a href="/clients.php">Clients</a>
+<a href="/contact.php">Contact</a>
+<a href="/app/login.php" class="bg-[#c4121f] hover:bg-red-700 text-white px-6 py-2.5 rounded-lg font-bold">Login</a>
+</div>
+</div>
+</nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="container hero-content">
-    <div class="hero-badge animate-in">
-      <span>&#9679;</span> Trusted by 50+ Indian Enterprises
-    </div>
-    <h1 class="animate-up">Empowering <span class="accent">Workforce Solutions</span> for India's Leading Industries</h1>
-    <p class="lead animate-up">From manpower outsourcing to payroll and compliance management, Pindari Enterprises delivers end-to-end workforce solutions that drive operational excellence.</p>
-    <div class="hero-actions animate-up">
-      <a href="<?= APP_URL ?>/public/contact.php" class="btn-primary">Get a Quote &#8594;</a>
-      <a href="<?= APP_URL ?>/public/services.php" class="btn-outline">Explore Services</a>
-    </div>
-  </div>
-</section>
+<div class="hero text-white py-20 px-6 text-center">
+<h1 class="text-4xl md:text-5xl font-black leading-tight">PUNE'S MOST RELIABLE<br><span class="text-[#ff4d5a]">MANPOWER SOLUTION</span></h1>
+<p class="text-white/60 mt-4 max-w-2xl mx-auto text-[15px]">We provide verified CNC Operators, Welders, Fitters & Helpers within 24 Hours across PCMC, Chakan & Ranjangaon MIDC</p>
+<div class="mt-8 flex gap-4 justify-center">
+<a href="https://wa.me/919860109069?text=Hi%20Pindari%20I%20need%20manpower" class="bg-[#25D366] px-7 py-3 rounded-lg font-bold"><i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp: 98601 09069</a>
+<a href="/clients.php" class="bg-white text-[#0a2342] px-7 py-3 rounded-lg font-bold">Our Clients</a>
+</div>
+</div>
 
-<!-- STATS -->
-<section class="stats-section">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-number" data-value="1500">0</div>
-        <div class="stat-label">Workforce Deployed</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" data-value="50" data-suffix="+">0</div>
-        <div class="stat-label">Enterprise Clients</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" data-value="15" data-suffix="+">0</div>
-        <div class="stat-label">Years Experience</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" data-value="98" data-suffix="%">0</div>
-        <div class="stat-label">Client Retention</div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- CLIENTS -->
+<div class="max-w-6xl mx-auto px-6 py-12">
+<h2 class="text-2xl font-black text-[#0a2342] text-center">Our Trusted Clients</h2>
+<p class="text-center text-gray-400 text-[13px] mt-1">Real industries we serve daily</p>
 
-<!-- SERVICES PREVIEW -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">What We Do</span>
-      <h2>Comprehensive Workforce Solutions</h2>
-      <p>We provide a full spectrum of services designed to manage your workforce efficiently, compliantly, and cost-effectively.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">&#128200;</div>
-        <h3>Manpower Outsourcing</h3>
-        <p>Complete workforce management for production, logistics, and operations with skilled and semi-skilled personnel.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">&#128101;</div>
-        <h3>Contract Staffing</h3>
-        <p>Flexible staffing solutions to meet seasonal demands and project-based requirements without long-term overhead.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">&#128176;</div>
-        <h3>Payroll Management</h3>
-        <p>Accurate, timely payroll processing with statutory deductions, payslip generation, and full compliance.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">&#128220;</div>
-        <h3>Compliance Management</h3>
-        <p>PF, ESI, labour law compliance, and statutory reporting handled by experts to keep your business audit-ready.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
 
-<!-- CLIENTS PREVIEW -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Our Clients</span>
-      <h2>Trusted by Industry Leaders</h2>
-      <p>We are proud to partner with India's most respected manufacturing and automotive enterprises.</p>
-    </div>
-    <div class="clients-grid">
-      <div class="client-card">
-        <div class="client-logo" style="background:#1a4a8e;">T</div>
-        <h4>Tata Motors</h4>
-        <p>Pune, Maharashtra</p>
-      </div>
-      <div class="client-card">
-        <div class="client-logo" style="background:#0a2a5e;">B</div>
-        <h4>Bajaj Auto</h4>
-        <p>Aurangabad, Maharashtra</p>
-      </div>
-      <div class="client-card">
-        <div class="client-logo" style="background:#d71921;">M</div>
-        <h4>Mahindra</h4>
-        <p>Pune, Maharashtra</p>
-      </div>
-      <div class="client-card">
-        <div class="client-logo" style="background:#c8102e;">F</div>
-        <h4>Force Motors</h4>
-        <p>Pune, Maharashtra</p>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="card bg-white rounded-2xl p-6 shadow-sm border transition">
+<div class="flex justify-between"><div class="w-12 h-12 rounded-full bg-[#0a2342] text-white flex items-center justify-center font-black">D</div><span class="text-[10px] bg-emerald-50 text-emerald-600 border px-3 py-1 rounded-full font-bold">● Active</span></div>
+<h3 class="font-black mt-4 text-[#0a2342]">DANKEL TECH</h3><p class="text-[12px] text-gray-500">Mr. Sachin Dandekar</p>
+</div>
 
-<!-- CTA -->
-<section class="section">
-  <div class="container">
-    <div class="cta-banner">
-      <div>
-        <h3>Ready to optimize your workforce?</h3>
-        <p>Let's discuss how Pindari Enterprises can support your staffing and compliance needs.</p>
-      </div>
-      <a href="<?= APP_URL ?>/public/contact.php" class="btn-primary">Contact Us Today</a>
-    </div>
-  </div>
-</section>
+<div class="card bg-white rounded-2xl p-6 shadow-sm border transition">
+<div class="flex justify-between"><div class="w-12 h-12 rounded-full bg-[#c4121f] text-white flex items-center justify-center font-black">R</div><span class="text-[10px] bg-emerald-50 text-emerald-600 border px-3 py-1 rounded-full font-bold">● Active</span></div>
+<h3 class="font-black mt-4 text-[#0a2342]">R K POLYMER</h3><p class="text-[12px] text-gray-500">Mr. Amol Shah</p>
+</div>
 
-<?php require_once __DIR__ . '/../includes/footer.php'; ?>
+<div class="card bg-white rounded-2xl p-6 shadow-sm border transition">
+<div class="flex justify-between"><div class="w-12 h-12 rounded-full bg-[#0a2342] text-white flex items-center justify-center font-black">K</div><span class="text-[10px] bg-emerald-50 text-emerald-600 border px-3 py-1 rounded-full font-bold">● Active</span></div>
+<h3 class="font-black mt-4 text-[#0a2342]">KRAFT PLAST INDS</h3><p class="text-[12px] text-gray-500">Mr. Sanket Shah</p>
+</div>
+
+<div class="card bg-white rounded-2xl p-6 shadow-sm border transition">
+<div class="flex justify-between"><div class="w-12 h-12 rounded-full bg-[#c4121f] text-white flex items-center justify-center font-black">A</div><span class="text-[10px] bg-emerald-50 text-emerald-600 border px-3 py-1 rounded-full font-bold">● Active</span></div>
+<h3 class="font-black mt-4 text-[#0a2342]">APEX ENGINEERS</h3><p class="text-[12px] text-gray-500">Mr. Murti</p>
+</div>
+
+<div class="card bg-white rounded-2xl p-6 shadow-sm border transition">
+<div class="flex justify-between"><div class="w-12 h-12 rounded-full bg-[#0a2342] text-white flex items-center justify-center font-black">S</div><span class="text-[10px] bg-emerald-50 text-emerald-600 border px-3 py-1 rounded-full font-bold">● Active</span></div>
+<h3 class="font-black mt-4 text-[#0a2342]">SUHAS ENTERPRISES</h3><p class="text-[12px] text-gray-500">Mr. Ganesh Sathe</p>
+</div>
+
+<div class="card bg-white rounded-2xl p-6 shadow-sm border transition">
+<div class="flex justify-between"><div class="w-12 h-12 rounded-full bg-[#c4121f] text-white flex items-center justify-center font-black">T</div><span class="text-[10px] bg-emerald-50 text-emerald-600 border px-3 py-1 rounded-full font-bold">● Active</span></div>
+<h3 class="font-black mt-4 text-[#0a2342]">TECHNOVA</h3><p class="text-[12px] text-gray-500">Mr. Jitendra Kelkar</p>
+</div>
+
+</div>
+</div>
+
+<!-- FEEDBACK MOVING -->
+<div class="bg-[#0a2342] py-10 overflow-hidden">
+<h3 class="text-center text-white font-black text-xl mb-6">Real Feedback from Unit Heads</h3>
+<div class="marquee-track">
+<div class="min-w-[360px] bg-white rounded-xl p-5 mr-5"><p class="text-yellow-500">★★★★★</p><p class="font-bold text-[13px] mt-2">"PINDARI ENTERPRISES PROVIDED US WITH 15 CNC OPERATORS WITHIN 24 HOURS!"</p><p class="text-[11px] text-gray-500 mt-2">MR. SACHIN DANDEKAR - Dankel Tech</p></div>
+<div class="min-w-[360px] bg-white rounded-xl p-5 mr-5"><p class="text-yellow-500">★★★★★</p><p class="font-bold text-[13px] mt-2">"THE MOST TRANSPARENT PAYROLL SYSTEM IN PCMC!"</p><p class="text-[11px] text-gray-500 mt-2">MR. AMOL SHAH - RK Polymer</p></div>
+<div class="min-w-[360px] bg-white rounded-xl p-5 mr-5"><p class="text-yellow-500">★★★★★</p><p class="font-bold text-[13px] mt-2">"ALL WORKERS VERIFIED WITH AADHAR & POLICE CHECKS!"</p><p class="text-[11px] text-gray-500 mt-2">MR. SANKET SHAH - Kraft Plast</p></div>
+<div class="min-w-[360px] bg-white rounded-xl p-5 mr-5"><p class="text-yellow-500">★★★★★</p><p class="font-bold text-[13px] mt-2">"PINDARI ENTERPRISES PROVIDED US WITH 15 CNC OPERATORS WITHIN 24 HOURS!"</p><p class="text-[11px] text-gray-500 mt-2">MR. SACHIN DANDEKAR - Dankel Tech</p></div>
+</div>
+</div>
+
+<a href="https://wa.me/919860109069?text=Hello%20Pindari%20Enterprises" target="_blank" class="fixed bottom-5 right-5 bg-[#25D366] w-[60px] h-[60px] rounded-full flex items-center justify-center text-white text-[32px] shadow-xl z-50"><i class="fa-brands fa-whatsapp"></i></a>
+
+<footer class="bg-[#071a32] text-white/40 text-center py-5 text-[11px]">PINDARI ENTERPRISES ERP v2.1 | +91 98601 09069 | PCMC, Pune</footer>
+</body>
+</html>
