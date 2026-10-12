@@ -2,7 +2,13 @@
 require_once __DIR__ . '/../config/config.php';
 $pageTitle = 'Contact Us';
 $currentPage = 'contact';
-require_once __DIR__ . '/../includes/header.php';
+
+// Include header safely
+if (file_exists(__DIR__ . '/../includes/header.php')) {
+    require_once __DIR__ . '/../includes/header.php';
+} elseif (file_exists('includes/header.php')) {
+    require_once 'includes/header.php';
+}
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,101 +25,90 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
         try {
-            $stmt = db()->prepare("INSERT INTO contact_messages (name, email, phone, company, message) VALUES (?, ?, ?, ?, ?)");
-            $stmt->execute([$name, $email, $phone, $company, $message]);
-            set_flash('success', 'Thank you! Your message has been received. Our team will contact you within 24 hours.');
-            redirect(APP_URL . '/public/contact.php');
+            if (function_exists('db')) {
+                $stmt = db()->prepare("INSERT INTO contact_messages (name, email, phone, company, message) VALUES (?, ?, ?, ?, ?)");
+                $stmt->execute([$name, $email, $phone, $company, $message]);
+            }
+            if (function_exists('set_flash')) {
+                set_flash('success', 'Thank you! Your message has been received. Our team will contact you within 24 hours.');
+            }
+            if (function_exists('redirect')) {
+                redirect(APP_URL . '/public/contact.php');
+            }
         } catch (Exception $e) {
-            set_flash('error', 'Sorry, there was an issue submitting your message. Please try again or email us directly.');
+            $error_msg = "Database error: " . $e->getMessage();
         }
-    } else {
-        set_flash('error', implode('<br>', $errors));
     }
 }
-
-$flash = get_flash();
 ?>
 
-<section class="page-header">
-  <div class="container">
-    <h1>Contact Us</h1>
-    <p>Get in touch with our team to discuss your workforce requirements.</p>
-    <div class="breadcrumb"><a href="<?= APP_URL ?>/public/index.php">Home</a> <span>/</span> <span>Contact</span></div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <?php if ($flash): ?>
-      <div class="flash flash-<?= e($flash['type']) ?>"><?= e($flash['message']) ?></div>
-    <?php endif; ?>
-
-    <div class="contact-grid">
-      <div class="contact-info-card">
-        <h3>Get In Touch</h3>
-        <div class="contact-info-item">
-          <div class="contact-info-icon">&#128205;</div>
-          <div>
-            <h5>Address</h5>
-            <p>Plot No. 22, Industrial Estate<br>Pimpri-Chinchwad, Pune<br>Maharashtra 411018, India</p>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="contact-info-icon">&#128222;</div>
-          <div>
-            <h5>Phone</h5>
-            <p>+91 98765 43210<br>+91 020 6612 3400</p>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="contact-info-icon">&#9993;</div>
-          <div>
-            <h5>Email</h5>
-            <p>info@pindari.com<br>hr@pindari.com</p>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="contact-info-icon">&#128337;</div>
-          <div>
-            <h5>Business Hours</h5>
-            <p>Mon - Sat: 9:00 AM - 6:30 PM<br>Sunday: Closed</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-form">
-        <h3 style="font-size:24px;font-weight:700;color:var(--blue);margin-bottom:8px;">Send Us a Message</h3>
-        <p style="color:var(--gray-500);margin-bottom:24px;font-size:15px;">Fill out the form below and we'll get back to you within 24 hours.</p>
-        <form method="POST" action="<?= APP_URL ?>/public/contact.php">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Full Name *</label>
-              <input type="text" name="name" required value="<?= e($_POST['name'] ?? '') ?>">
-            </div>
-            <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" name="phone" value="<?= e($_POST['phone'] ?? '') ?>">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Email Address *</label>
-              <input type="email" name="email" required value="<?= e($_POST['email'] ?? '') ?>">
-            </div>
-            <div class="form-group">
-              <label>Company Name</label>
-              <input type="text" name="company" value="<?= e($_POST['company'] ?? '') ?>">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Message *</label>
-            <textarea name="message" rows="5" required placeholder="Tell us about your workforce requirements..."><?= e($_POST['message'] ?? '') ?></textarea>
-          </div>
-          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Send Message &#8594;</button>
-        </form>
-      </div>
+<!-- Contact Section Layout -->
+<section class="bg-navy text-white py-5 text-center" style="background-color: #0A2540;">
+    <div class="container">
+        <h1 class="fw-bold mb-2">Contact Us</h1>
+        <p class="text-white-50">Get in touch with Pindari Enterprises for verified manpower supply.</p>
     </div>
-  </div>
 </section>
 
-<?php require_once __DIR__ . '/../includes/footer.php'; ?>
+<div class="container py-5">
+    <div class="row g-4">
+        <!-- Head Office Info Box -->
+        <div class="col-md-5">
+            <div class="card p-4 shadow-sm border-0 text-white h-100" style="background-color: #0A2540;">
+                <h3 class="fw-bold mb-3">Head Office</h3>
+                <p class="mb-3">📍 PCMC, Chakan & Ranjangaon MIDC, Pune, Maharashtra</p>
+                <p class="mb-3">📞 Phone: +91 98601 09069</p>
+                <p class="mb-0">✉️ Email: info@pindarienterprises.com</p>
+            </div>
+        </div>
+
+        <!-- Contact Form Box -->
+        <div class="col-md-7">
+            <div class="card p-4 shadow-sm border-0">
+                <h3 class="fw-bold mb-3" style="color: #0A2540;">Send a Message</h3>
+                
+                <?php if (!empty($errors)): ?>
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            <?php foreach ($errors as $err): ?>
+                                <li><?php echo htmlspecialchars($err); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+
+                <form action="contact.php" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" name="name" class="form-control" required placeholder="Enter your full name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" name="email" class="form-control" required placeholder="Enter email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mobile Number</label>
+                        <input type="tel" name="phone" class="form-control" placeholder="Enter mobile number">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Company / Industry</label>
+                        <input type="text" name="company" class="form-control" placeholder="Company name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Message / Requirement</label>
+                        <textarea name="message" class="form-control" rows="4" required placeholder="Write your requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100 fw-bold" style="background-color: #E63946; border-color: #E63946;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php 
+if (file_exists(__DIR__ . '/../includes/footer.php')) {
+    require_once __DIR__ . '/../includes/footer.php';
+} elseif (file_exists('includes/footer.php')) {
+    require_once 'includes/footer.php';
+}
+?>
